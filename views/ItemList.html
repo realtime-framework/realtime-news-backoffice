@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="../js/jquery-2.1.3.js"></script>
+	<script src="../js/init.js">
+	</script>
+	<script type="text/javascript" src="https://storage-cdn.realtime.co/storage/1.0.0/realtime-storage-min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/login.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+	
+	<script src="../js/myJS.js"></script>
+	<script src="../js/migration.js"></script>
+	<script type="text/javascript">
+		checkLogin();
+	</script>
+</head>
+<body>
+	<div class="container">
+	<div class="row clearfix">
+	<div class="row clearfix">
+		<div class="col-md-12 column" >
+			<div style="float:left">
+				<img src="../images/realtime.png" style="width: 200px; height: auto;">
+			</div>
+			<div style="float:left">
+				<h1>Realtime News app</h1>
+				<h3 id="env"></h3>
+			</div>
+
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="btn-group column spacer right" >
+			<button class="btn btn-danger" type="button" onclick="javascript: logout();">Logout</button>
+		</div>
+	</div>
+		<div class="col-md-12 column"  >
+			<ul class="nav nav-tabs">
+			  <li class="active"><a href="#tab1" data-toggle="tab" aria-expanded="true">Contens</a></li>
+			  <li><a href="#tab2" data-toggle="tab">Tags</a></li>
+			  <li><a href="#tab3" data-toggle="tab">Users</a></li>
+			</ul>
+		</div>
+		<div class="col-md-12 column table-bordered" style="margin-top: 10px;">
+			<div class="tab-content">
+	    		<div class="tab-pane active" id="tab1">
+		    	<div class="btn-group spacer right">
+					 <button class="btn btn-primary" type="button" onclick="javascript: window.location='NewItem.html';">Add new content</button>
+				</div>
+				<h2>Contents list</h2>
+				<div class="row clearfix">
+					<div class="col-md-12 column border" >
+						 <div class="text-center">
+						    <ul class="pagination" id="contentsPagination1">
+						        
+						    </ul>
+						</div>
+					</div>
+				</div>
+				<div class="row clearfix">
+				<div class="col-md-12 column" >
+				<table class="table table-striped table-bordered table-condensed" id="contents">
+					<thead>
+						<tr>
+							<th>
+								MonthYear
+							</th>
+							<th>
+								Type
+							</th>
+							<th>
+								Date
+							</th>
+							<th>
+								Image
+							</th>
+							<th>
+								Tag
+							</th>
+							<th>
+								Title
+							</th>
+							<th>
+								content URL
+							</th>
+							<th>
+								Description
+							</th>
+							<th>
+								Update
+							</th>
+							<th>
+								Remove
+							</th>
+						</tr>
+					</thead>
+					<tbody id="contentsBoby">
+						
+					</tbody>
+					</table>
+
+					<div class="text-center">
+					    <ul class="pagination" id="contentsPagination2">
+					        
+					    </ul>
+					</div>
+					</div>
+					</div>
+				</div>
+
+
+				<div class="tab-pane" id="tab2">
+				<div class="btn-group spacer right">
+					 <button class="btn btn-primary" type="button" onclick="javascript: window.location='NewTag.html';">Add new tag</button>
+				</div>
+				<h2>Tags list</h2>
+				<div class="row clearfix">
+					<div class="col-md-12 column border" >
+						 <div class="text-center">
+						    <ul class="pagination" id="tagsPagination1">
+						        
+						    </ul>
+						</div>
+					</div>
+				</div>
+				<div class="row clearfix">
+				<div class="col-md-12 column" >
+				<table class="table table-striped table-bordered table-condensed" id="tags">				
+				<thead>
+					<tr>
+						<th>
+							Tag
+						</th>
+						<th>
+							Type
+						</th>
+						<th>
+							Update
+						</th>
+						<th>
+							Remove
+						</th>
+					</tr>
+				</thead>
+				<tbody id="tagsBoby">
+					
+				</tbody>
+			</table>
+					<div class="text-center">
+					    <ul class="pagination" id="tagsPagination2">
+					        
+					    </ul>
+					</div>
+					</div>
+					</div>
+					</div>
+
+				<div class="tab-pane" id="tab3">
+				<div class="btn-group spacer right">
+					 <button class="btn btn-primary" type="button" onclick="javascript: window.location='NewUser.html';">Add new User</button>
+				</div>
+				<h2>Users list</h2>
+				<div class="row clearfix">
+					<div class="col-md-12 column border" >
+						 <div class="text-center">
+						    <ul class="pagination" id="usersPagination1">
+						        
+						    </ul>
+						</div>
+					</div>
+				</div>
+				<div class="row clearfix">
+				<div class="col-md-12 column" >
+				<table class="table table-striped table-bordered table-condensed" id="users">				
+				<thead>
+					<tr>
+						<th>
+							Username
+						</th>
+						<th>
+							Password
+						</th>
+						<th>
+							Remove
+						</th>
+					</tr>
+				</thead>
+				<tbody id="usersBoby">
+					<script type="text/javascript">
+					var token = localStorage.getItem("token");
+						getStorageRef(token, function () {
+							getItems();
+							getTags();
+							getUsers();
+						});
+					</script>
+				</tbody>
+			</table>
+					<div class="text-center">
+					    <ul class="pagination" id="usersPagination2">
+					        
+					    </ul>
+					</div>
+					</div>
+					</div>
+					</div>
+
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Remove</h4>
+      </div>
+      <div class="modal-body" id="modalContent">
+  			<h3>Do you realy wont to remove this content?</h3>
+      </div>
+      <div class="modal-footer" id="modalFooter">
+        
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

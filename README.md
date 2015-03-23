@@ -1,2 +1,11 @@
-# realtime-news-backoffice
-The content management system for the Realtime Code Hosting example app, Realtime News
+## Realtime News Backoffice
+The Realtime Code Hosting service provides you an easy way of executing server-side scripts without the need of managing the required infrastructure. You write the code and Realtime takes care of all the backend heavy-lifting issues.
+
+To illustrate the main concepts we've built an enterprise mobile app. This repository contains the CMS backoffice where you're able to manage the app's contents.
+
+## More about Realtime Code Hosting
+[http://storage-public.realtime.co/documentation/code-hosting-guide/1.0/overview.html](http://storage-public.realtime.co/documentation/code-hosting-guide/1.0/overview.html)
+
+## Authors
+Realtime.co
+

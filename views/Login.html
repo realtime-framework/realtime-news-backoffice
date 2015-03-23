@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<script src="http://crypto-js.googlecode.com/svn/tags/3.0.2/build/rollups/md5.js"></script>
+	<script type="text/javascript" src="../js/jquery-2.1.3.js"></script>
+	<script src="../js/init.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="../css/login.css">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-4 column">
+		</div>
+		<div class="col-md-4 column table-bordered padding">
+			<img alt="140x140" src="../images/RealtimeLogo.png" />
+			<form role="form" class="form-inline">
+				<div class="form-group">
+					 <label for="UserName">Username: </label><input type="text" class="form-control" id="UserName" />
+				</div>
+				<div class="form-group">
+					 <label for="Password">Password: </label><input type="password" class="form-control" id="Password" />
+				</div>
+				<br>
+				<div class="form-group">
+					 <label for="environment">Environment:</label>
+				</div>
+
+				<!--BEGIN APP KEY CONFIG -->
+				<div class="form-group">
+					 <select id="environment">
+					 <!-- INSERT HERE YOUR DEVELOPMENT APP_KEY -->
+					 	<option value="DEV_APP_KEY">Debug - APPKEY: DEV_APP_KEY</option>
+					 <!-- INSERT HERE YOUR PRODUCTION APP_KEY -->
+					 	<option value="PRD_APP_KEY">Release  - APPKEY: PRD_APP_KEY</option>
+					 </select>
+				</div>
+				<!-- END APP_KEY CONFIG -->
+				
+			</form>
+		</div>
+		<div class="col-md-4 column">
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$('#Password').keypress(function(e) {
+    if(e.which == 13) {
+    	var APPKEY = $('#environment').val();
+    	localStorage.setItem("APPKEY", APPKEY);
+    	var pass = CryptoJS.MD5($('#Password').val());
+        auth ($('#UserName').val(), pass, APPKEY, function(data){
+        	var token = data['token'];
+        	localStorage.setItem("token", token);
+        	window.location = 'ItemList.html';
+        });
+    }
+});
+</script>
+</body>
+</html>

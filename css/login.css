@@ -1,0 +1,60 @@
+
+
+.border {	
+	border-top: 1px lightgray solid;	
+}
+
+.padding{
+	margin-top: 50px;
+	padding: 0px 20px 20px 20px;
+	text-align: center;
+}
+
+#UserName, #Password{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}
+
+.spacer{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.topWidth
+{
+	width: 100%;
+}
+
+.right
+{
+	float: right;
+}
+
+.table tbody>tr>td{
+    vertical-align: middle;
+}
+
+#bimg{
+	margin-top: 10%;
+	margin-left: 25%;
+	opacity: 1.0;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+}
+
+#myModal {
+	background-color: black;
+}
+
+#tagSelector, #newContent{
+	display: none;
+}
+
+#pag{
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#environment{
+	min-width: 100px;
+}
